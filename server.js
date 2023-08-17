@@ -11,7 +11,11 @@ const PORT = process.env.PORT || 3001;
 
 app.get('/test', (request, response) => {
 
-  response.send('test request received');
+    response.send('test request received');
+
+});
+
+app.get('/books', async (request, response) => {
 
 });
 
