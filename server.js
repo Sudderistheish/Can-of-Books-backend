@@ -9,6 +9,8 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
+mongoose.connect(process.env.DATABASE_URL);
+
 app.get('/test', (request, response) => {
 
     response.send('test request received');
