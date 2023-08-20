@@ -46,4 +46,10 @@ async function seed() {
   mongoose.disconnect();
 }
 
-main();
+// main();
+mongoose.connect(process.env.DATABASE_URL).then(() => {
+  console.log(`Mongoose connected`);
+  app.listen(PORT, () => {
+    console.log(`Express listening on ${PORT}`);
+  });
+});
