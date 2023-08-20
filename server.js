@@ -22,9 +22,10 @@ app.get('/book', async (request, response) => {
     try {
         if (request.query.name) {
             const book = await book.find({ name: request.query.name })
-            response.send(book);
+            response.send([book]);
         } else {
             const book = await book.find({});
+            if (Object.keys(book).length === 0) response.send([])
             response.send(book);
         }
 
