@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const Book1 = require('./book/book1');
 
 const app = express();
 app.use(cors());
@@ -21,10 +22,10 @@ app.get('/', (request, response) => {
 app.get('/book', async (request, response) => {
     try {
         if (request.query.name) {
-            const book = await book.find({ name: request.query.name })
+            const book = await Book1.find({ name: request.query.name })
             response.send([book]);
         } else {
-            const book = await book.find({});
+            const book = await Book1.find({});
             if (Object.keys(book).length === 0) response.send([])
             response.send(book);
         }
