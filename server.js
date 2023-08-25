@@ -53,6 +53,18 @@ app.post('/books', async (request, response) => {
 
 });
 
+app.delete('/books/:id', async (request, response) => {
+  const id = request.params.id;
+
+  try {
+    await Book1.findByIdAndDelete(id);
+    response.status(204).send('success');
+  } catch (error) {
+    console.error(error);
+    response.status(404).send(`Unable to delete book with id ${id}`)
+  }
+});
+
 
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
